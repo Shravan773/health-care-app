@@ -40,9 +40,17 @@ app.use(cors({
 
 // Apply Auth0 middleware, but exclude public routes
 app.use((req, res, next) => {
-  if (req.method === 'OPTIONS' || req.path === '/health') {
-    return next();
+  const publicRoutes = ['/health', '/favicon.ico', '/favicon.png'];
+
+  if (req.method === 'OPTIONS' || publicRoutes.includes(req.path)) {
+    return next(); // Allow public routes without authentication
   }
+
+  if (!req.headers['x-user-role']) {
+    console.error('No role provided in headers');
+    return res.status(401).json({ message: 'No role provided in headers' });
+  }
+
   authMiddleware(req, res, next);
 });
 

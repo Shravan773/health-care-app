@@ -1,0 +1,47 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  name         String
+  role         Role         @default(CARE_WORKER)
+  authId       String?      @unique  // Add this field for Auth0 user ID
+  clockRecords ClockRecord[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+enum Role {
+  MANAGER
+  CARE_WORKER
+}
+
+model ClockRecord {
+  id              String    @id @default(uuid())
+  user            User      @relation(fields: [userId], references: [id])
+  userId          String
+  clockInTime     DateTime
+  clockInLocation Json
+  clockInNote     String?
+  clockOutTime    DateTime?
+  clockOutLocation Json?
+  clockOutNote    String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Perimeter {
+  id              String    @id @default(uuid())
+  centerLatitude  Float
+  centerLongitude Float
+  radiusKm        Float
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}

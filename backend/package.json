@@ -6,30 +6,31 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "prisma generate"
-  },
+    "build": "prisma generate && node src/server.js",
+  },"postinstall": "prisma generate"
   "keywords": [],
-  "author": "",
+  "author": "",],
   "license": "ISC",
   "description": "",
-  "dependencies": {
+  "dependencies": {,
     "@graphql-tools/schema": "^10.0.23",
-    "@graphql-tools/utils": "^10.8.6",
-    "@prisma/client": "^6.5.0",
+    "@graphql-tools/utils": "^10.8.6",",
+    "@prisma/client": "^6.5.0",0.8.6",
     "apollo-server": "^3.13.0",
     "apollo-server-express": "^3.13.0",
-    "axios": "^1.8.3",
-    "cors": "^2.8.5",
+    "axios": "^1.8.3",ress": "^3.13.0",
+    "cors": "^2.8.5",,
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-jwt": "^8.5.1",
     "express-jwt-authz": "^2.4.1",
-    "geolib": "^3.3.4",
+    "geolib": "^3.3.4",: "^2.4.1",
     "graphql": "^16.10.0",
-    "jwks-rsa": "^3.1.0",
-    "prisma": "^6.5.0"
-  },
+    "jwks-rsa": "^3.1.0",,
+    "prisma": "^6.5.0"0",
+  },"prisma": "^6.5.0"
   "devDependencies": {
     "nodemon": "^3.1.9"
-  }
+  } "nodemon": "^3.1.9"
+} }
 }

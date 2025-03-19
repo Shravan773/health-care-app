@@ -74,7 +74,12 @@ app.use((req, res, next) => {
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok' });
+  try {
+    res.status(200).json({ status: 'ok' });
+  } catch (error) {
+    console.error('Health check error:', error);
+    res.status(500).json({ status: 'error', message: error.message });
+  }
 });
 
 const server = new ApolloServer({

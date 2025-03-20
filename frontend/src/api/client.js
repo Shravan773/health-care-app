@@ -28,7 +28,7 @@ export const getAuthHeaders = (token) => ({
 });
 
 export const httpLink = new HttpLink({
-  uri: '/graphql', // Use relative path for proxy
+  uri: import.meta.env.VITE_GRAPHQL_URI, // Use the environment variable instead of '/graphql'
   credentials: 'include',
   fetchOptions: {
     mode: 'cors',

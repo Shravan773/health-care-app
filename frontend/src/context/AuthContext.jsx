@@ -238,7 +238,11 @@ export const AuthProvider = ({ children }) => {
       token,
       apolloClient,
       login,
-      logout: () => logout({ returnTo: window.location.origin }),
+      logout: () => logout({ 
+        returnTo: window.location.origin.includes('localhost') 
+          ? 'http://localhost:5173' 
+          : 'https://health-care-app-r21c.vercel.app'
+      }),
       clockIn: async ({ latitude, longitude, note }) => {
         try {
           const response = await clockInMutation({

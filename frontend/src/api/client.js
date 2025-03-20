@@ -29,7 +29,7 @@ export const getAuthHeaders = (token) => ({
 
 export const httpLink = new HttpLink({
   uri: import.meta.env.VITE_GRAPHQL_URI, // Use the environment variable instead of '/graphql'
-  credentials: 'include',
+  credentials: 'same-origin', // Change from 'include' to 'same-origin'
   fetchOptions: {
     mode: 'cors',
   }

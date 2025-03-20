@@ -7,27 +7,6 @@ const Login = () => {
   const { isAuthenticated, user, isLoading, login } = useAuth();
   const navigate = useNavigate();
 
-  const showDemoCredentials = () => {
-    alert(
-      'Demo Credentials:\n\n' +
-      'Care Worker Account:\n' +
-      'Email: careworker@example.com\n' +
-      'Password: Careworker@test\n\n' +
-      'Manager Account:\n' +
-      'Email: manager@example.com\n' +
-      'Password: Manager@test'
-    );
-  };
-
-  // Show demo credentials alert on component mount with delay
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     showDemoCredentials();
-  //   }, 1000); // 1 second delay
-
-  //   return () => clearTimeout(timer); // Cleanup timer
-  // }, []);
-
   useEffect(() => {
     if (!isLoading && isAuthenticated && user) {
       const userRole = localStorage.getItem('user_role') || 
@@ -83,18 +62,6 @@ const Login = () => {
           </Button>
         </Space>
       </Card>
-
-      <Button
-        type="primary"
-        onClick={showDemoCredentials}
-        style={{
-          position: 'fixed',
-          right: 24,
-          bottom: 24,
-        }}
-      >
-        Demo Credentials
-      </Button>
     </div>
   );
 };

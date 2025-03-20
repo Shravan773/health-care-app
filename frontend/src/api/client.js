@@ -51,8 +51,7 @@ export const authLink = new ApolloLink((operation, forward) => {
       'X-User-Name': name || '',
       'X-User-Id': id || '',
       'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      'Accept': 'application/json'
     },
   }));
 
